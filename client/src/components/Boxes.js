@@ -2,13 +2,13 @@ import React from "react";
 import { Map, Placemark, YMaps, ZoomControl } from "react-yandex-maps";
 
 const Boxes = (props) => {
-  const { getLocation } = props;
+  const { getLocation, picture } = props;
   return (
     <div className="boxes">
-      <div className="mapbox">
-        LOCATION in MAP{" "}
-        <i>{`${getLocation.latitude + " " + getLocation.longitude}`}</i>
-        {getLocation.latitude ? (
+      {getLocation.latitude ? (
+        <div className="mapbox">
+          LOCATION in MAP{" "}
+          <i>{`${getLocation.latitude + " " + getLocation.longitude}`}</i>
           <YMaps>
             <Map
               defaultState={{
@@ -23,9 +23,9 @@ const Boxes = (props) => {
               />
             </Map>
           </YMaps>
-        ) : null}
-      </div>
-      <div className="mapbox">PICTURE</div>
+        </div>
+      ) : null}
+      {picture ? <div className="mapbox">PICTURE</div> : null}
     </div>
   );
 };

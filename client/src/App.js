@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Boxes from "./components/Boxes";
-import Forms from "./components/Forms";
+import AdminPage from "./components/AdminPage";
+import ClientPage from "./components/ClientPage";
 
 function App() {
   const [getLocation, setGetLocation] = useState({});
@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="ttl">Share Location</h2>
-      <Forms getLoc={getLoc} />
-      <Boxes getLocation={getLocation} />
+      <h1 className="ttl">EcoWash</h1>
+      <ClientPage getLocation={getLocation} getLoc={getLoc} />
+      <AdminPage />
     </div>
   );
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+
+      body {
+        /* text-align: center; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: bisque;
+      }
+      * {
+        margin-top: 15px;
+      }
+      .ttl {
+        font-family: "Montserrat", sans-serif;
+      }
+      .mapbox {
+        border: 1px solid red;
+        width: 400px;
+        height: 300px;
+        margin: 5px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .info {
+        display: flex;
+        /* flex-direction: column; */
+      }
+      .info > div {
+        margin: 5px;
+      }
+      .file {
+        border: 1px solid grey;
+        padding: 3px;
+        border-radius: 2px;
+      }
+      .inputs {
+        display: flex;
+        flex-direction: column;
+      }
+      .sbtn {
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+      .sbtn:hover {
+        /* box-shadow: 5px 5px 5px black; */
+        box-shadow: 0px 0px 10px 1.5px red;
+        transition: 0.2s all ease-in;
+      }
+      .boxes {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="ttl">Share Location</h2>
+    <div>
+      <form>
+        <div class="info">
+          <div>
+            <h3>Name</h3>
+            <h3>Phone Number</h3>
+            <h3>Photo</h3>
+            <h3>Location</h3>
+          </div>
+          <div class="inputs">
+            <input type="text" placeholder="Enter name" />
+            <input type="number" placeholder="Enter phone number" />
+            <input class="file" type="file" placeholder="Enter photo" />
+            <input type="text" placeholder="Enter current location" />
+          </div>
+        </div>
+
+        <input class="sbtn" type="submit" />
+      </form>
+    </div>
+    <div class="boxes">
+      <div class="mapbox">LOCATION in MAP</div>
+      <div class="mapbox">PICTURE</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(96, 107, 97);
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttl {
+  font-family: "Montserrat", sans-serif;
+  align-self: center;
+  /* font-size: xx-large; */
+}
+/* forms */
+/* forms */
+/* forms */
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(228, 216, 216);
+  padding: 20px;
+  box-shadow: 0px 0px 10px 5px rgb(54, 51, 51);
+  width: 330px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.info > div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+.file {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+input {
+  padding: 4px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  background-color: antiquewhite;
+  width: 200px;
+}
+
+.sbtn {
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: rgb(240, 255, 241);
+}
+.sbtn:hover {
+  box-shadow: 0px 0px 10px 1.5px rgb(138, 84, 84);
+  transition: 0.2s all ease-in;
+  background-color: antiquewhite;
+}
+.gps {
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: antiquewhite;
+  width: 209px;
+  padding: 4px;
+}
+/* boxes */
+/* boxes */
+/* boxes */
+.boxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 380px;
+}
+.mapbox {
+  border: 1px solid rgb(51, 255, 0);
+  width: 400px;
+  height: 300px;
+  margin: 5px;
+}
+
+/* adminPage */
+/* adminPage */
+/* adminPage */
+.AdminPage {
+  border: 1px solid red;
+  width: 100%;
+}
+.client {
+  margin: 15px;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+}

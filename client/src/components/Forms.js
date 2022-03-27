@@ -4,6 +4,9 @@ const Forms = (props) => {
   const { getLoc } = props;
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(0);
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [carnum, setCarnum] = useState("");
   const [img, setImg] = useState("");
   const [location, setLocation] = useState({
     latitude: null,
@@ -27,6 +30,9 @@ const Forms = (props) => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("phone", phone);
+    formData.append("model", model);
+    formData.append("color", color);
+    formData.append("carnum", carnum);
     formData.append("img", img);
     formData.append("location", location);
     console.log(formData);
@@ -36,39 +42,73 @@ const Forms = (props) => {
   return (
     <div>
       <form onSubmit={submitting}>
+        <div className="ttl">Guest details</div>
         <div className="info">
           <div>
-            <h3>Name</h3>
-            <h3>Phone Number</h3>
-            <h3>Photo</h3>
-            <h3>Location</h3>
-          </div>
-          <div className="inputs">
+            <div>Name:</div>
             <input
               type="text"
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter name"
             />
+          </div>
+          <div>
+            <div>Tel:</div>
             <input
               type="number"
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter phone number"
             />
+          </div>
+          <div>
+            <div>Car model:</div>
+            <input
+              type="text"
+              onChange={(e) => setModel(e.target.value)}
+              placeholder="Nexia 2"
+            />
+          </div>
+          <div>
+            <div>Car color:</div>
+            <input
+              type="text"
+              onChange={(e) => setColor(e.target.value)}
+              placeholder="white"
+            />
+          </div>
+          <div>
+            <div>Car number:</div>
+            <input
+              type="text"
+              onChange={(e) => setCarnum(e.target.value)}
+              placeholder="AA 777 A"
+            />
+          </div>
+          <div>
+            <div>Photo in current place:</div>
             <input
               className="file"
               type="file"
               onChange={(e) => setImg(e.target.files[0])}
               placeholder="Enter photo"
             />
-            <button onClick={position}>show location</button>
-            {location.latitude !== null ? (
-              <div>
-                <i>{location.latitude + "; " + location.longitude}</i>
-              </div>
-            ) : null}
           </div>
+          <div>
+            <div>Location:</div>
+            <button className="gps" onClick={position}>
+              press here for location
+            </button>
+          </div>
+
+          {location.latitude !== null ? (
+            <div>
+              <i>{location.latitude + "; " + location.longitude}</i>
+            </div>
+          ) : null}
         </div>
-        <input className="sbtn" type="submit" />
+        <button className="sbtn" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
