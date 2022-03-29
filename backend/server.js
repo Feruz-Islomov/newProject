@@ -1,4 +1,17 @@
 import express, { urlencoded } from "express";
+import mongoose from "mongoose";
+import "dotenv/config";
+
+mongoose
+  .connect(process.env.MONGODBURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("connected to mongo db");
+  })
+  .catch(() => console.log("not connected to Mdb"));
+
 import GetRoutes from "./routes/GetRoutes.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
