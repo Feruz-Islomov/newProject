@@ -1,4 +1,5 @@
 import Customer from "../models/productModel.js";
+import { readFile } from "fs";
 
 export async function sendingData(req, res) {
   res.send("slash coming");

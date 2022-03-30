@@ -6,7 +6,7 @@ const router = express.Router();
 // router.get("/", (req, res) => {
 //   res.send("slash coming");
 // });
-router.get("/", sendingData);
+router.get("/datas", sendingData);
 
 router.post("/post", (req, res) => {});
 
