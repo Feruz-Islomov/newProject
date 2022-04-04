@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Axios from "axios";
+
+import { api, postData } from "./Api";
 
 const Forms = (props) => {
   const { getLoc } = props;
@@ -12,7 +15,7 @@ const Forms = (props) => {
     latitude: null,
     longitude: null,
   });
-  //   console.log(location);
+  // console.log(location);
 
   const position = async () => {
     await navigator.geolocation.getCurrentPosition(
@@ -25,7 +28,7 @@ const Forms = (props) => {
     );
   };
 
-  const submitting = (e) => {
+  const submitting = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
@@ -35,7 +38,21 @@ const Forms = (props) => {
     formData.append("carnum", carnum);
     formData.append("img", img);
     formData.append("location", location);
-    console.log(formData);
+    // const formData = {
+    //   name: name,
+    //   phone: phone,
+    //   model: model,
+    //   color: color,
+    //   carnum: carnum,
+    //   img: img,
+    //   location: location,
+    // };
+
+    await postData(formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     getLoc(location);
   };
 
@@ -48,40 +65,60 @@ const Forms = (props) => {
             <div>Name:</div>
             <input
               type="text"
+              value={name}
+              id="name"
+              name="name"
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter name"
+              required
             />
           </div>
           <div>
             <div>Tel:</div>
             <input
               type="number"
+              id="number"
+              name="number"
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter phone number"
+              required
             />
           </div>
           <div>
             <div>Car model:</div>
             <input
               type="text"
+              id="model"
+              name="model"
+              value={model}
               onChange={(e) => setModel(e.target.value)}
               placeholder="Nexia 2"
+              required
             />
           </div>
           <div>
             <div>Car color:</div>
             <input
               type="text"
+              id="color"
+              name="color"
+              value={color}
               onChange={(e) => setColor(e.target.value)}
               placeholder="white"
+              required
             />
           </div>
           <div>
             <div>Car number:</div>
             <input
               type="text"
+              value={carnum}
+              id="carnum"
+              name="carnum"
               onChange={(e) => setCarnum(e.target.value)}
               placeholder="AA 777 A"
+              required
             />
           </div>
           <div>
@@ -89,13 +126,18 @@ const Forms = (props) => {
             <input
               className="file"
               type="file"
+              id="img"
+              name="img"
+              // value={img}
+              // ref={img}
               onChange={(e) => setImg(e.target.files[0])}
               placeholder="Enter photo"
+              required
             />
           </div>
           <div>
             <div>Location:</div>
-            <button className="gps" onClick={position}>
+            <button className="gps" type="button" onClick={position}>
               press here for location
             </button>
           </div>
