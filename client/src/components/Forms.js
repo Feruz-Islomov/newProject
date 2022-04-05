@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Axios from "axios";
 
-import { api, postData } from "./Api";
+import { postData } from "./Api";
 
 const Forms = (props) => {
   const { getLoc } = props;
@@ -15,7 +14,6 @@ const Forms = (props) => {
     latitude: null,
     longitude: null,
   });
-  // console.log(location);
 
   const position = async () => {
     await navigator.geolocation.getCurrentPosition(
@@ -38,15 +36,6 @@ const Forms = (props) => {
     formData.append("carnum", carnum);
     formData.append("img", img);
     formData.append("location", location);
-    // const formData = {
-    //   name: name,
-    //   phone: phone,
-    //   model: model,
-    //   color: color,
-    //   carnum: carnum,
-    //   img: img,
-    //   location: location,
-    // };
 
     await postData(formData)
       .then((res) => {

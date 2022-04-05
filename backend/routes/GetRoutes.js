@@ -1,5 +1,6 @@
 import express from "express";
 import { sendingData } from "../controller/SendData.js";
+import upload from "../helpers/UploadFile.js";
 
 const router = express.Router();
 
@@ -8,9 +9,9 @@ const router = express.Router();
 // });
 router.get("/datas", sendingData);
 
-router.post("/post", (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+router.post("/postClient", upload.single("img"), (req, res) => {
+  console.log(req.body, req.file);
+  res.status(200).send(req.body);
 });
 
 router.get("*", (req, res) => {
