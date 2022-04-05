@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
 import { postData } from "./Api";
 
 const Forms = (props) => {
@@ -10,18 +10,15 @@ const Forms = (props) => {
   const [color, setColor] = useState("");
   const [carnum, setCarnum] = useState("");
   const [img, setImg] = useState("");
-  const [location, setLocation] = useState({
-    latitude: null,
-    longitude: null,
-  });
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
   const position = async () => {
     await navigator.geolocation.getCurrentPosition(
-      (position) =>
-        setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        }),
+      (position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      },
       (err) => console.log("Xato shud:" + err)
     );
   };
@@ -29,20 +26,27 @@ const Forms = (props) => {
   const submitting = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("id", uuidv4());
     formData.append("name", name);
     formData.append("phone", phone);
     formData.append("model", model);
     formData.append("color", color);
     formData.append("carnum", carnum);
     formData.append("img", img);
-    formData.append("location", location);
+    formData.append("latitude", latitude);
+    formData.append("longitude", longitude);
+    formData.append("time", new Date().toLocaleTimeString());
+    // formData.append("time", new Date().toISOString());
+    // formData.append("time", new Date().toDateString());
+    // formData.append("time", new Date().toLocaleDateString());
+    // formData.append("time", new Date().toLocaleString());
 
     await postData(formData)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
-    getLoc(location);
+    getLoc(latitude, longitude);
   };
 
   return (
@@ -131,9 +135,9 @@ const Forms = (props) => {
             </button>
           </div>
 
-          {location.latitude !== null ? (
+          {latitude ? (
             <div>
-              <i>{location.latitude + "; " + location.longitude}</i>
+              <i>{latitude + "; " + longitude}</i>
             </div>
           ) : null}
         </div>

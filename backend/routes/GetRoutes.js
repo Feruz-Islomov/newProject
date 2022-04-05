@@ -4,13 +4,10 @@ import upload from "../helpers/UploadFile.js";
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   res.send("slash coming");
-// });
 router.get("/datas", sendingData);
 
 router.post("/postClient", upload.single("img"), (req, res) => {
-  console.log(req.body, req.file);
+  console.log(req.body);
   res.status(200).send(req.body);
 });
 

@@ -4,9 +4,9 @@ import ClientPage from "./components/ClientPage";
 
 function App() {
   const [getLocation, setGetLocation] = useState({});
-  const getLoc = (a) => {
-    setGetLocation(a);
-    console.log(a);
+  const getLoc = (latitude, longitude) => {
+    setGetLocation({ latitude, longitude });
+    console.log(latitude, longitude);
   };
 
   return (

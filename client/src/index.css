@@ -29,7 +29,8 @@ form {
   background-color: rgb(228, 216, 216);
   padding: 20px;
   box-shadow: 0px 0px 10px 5px rgb(54, 51, 51);
-  width: 330px;
+  /* width: 340px; */
+  min-width: 340px;
 }
 
 .info {
@@ -99,10 +100,13 @@ input {
 /* adminPage */
 .AdminPage {
   border: 1px solid red;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 340px;
+  max-width: 410px;
 }
 .client {
-  margin: 15px;
+  margin: 10px;
   border: 1px solid white;
   padding: 5px;
   cursor: pointer;

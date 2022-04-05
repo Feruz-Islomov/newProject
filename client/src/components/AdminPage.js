@@ -4,9 +4,10 @@ const AdminPage = () => {
   return (
     <div className="AdminPage">
       <div className="client">
-        <h1>Client 1 (10:31)</h1>
+        <h1>Client 1 (10:31 soat)</h1>
         <p>
-          name, tel, <br /> model, color, number, photo, location
+          name, tel, <br /> model, color, number, photo, location, location
+          location, location
         </p>
         <button>accept</button>
         <button>delete</button>
