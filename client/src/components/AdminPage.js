@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getData } from "./Api";
 
 const AdminPage = () => {
+  const [datas, setDatas] = useState([]);
+  useEffect(() => {
+    getData()
+      .then((res) => {
+        setDatas(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(datas);
   return (
     <div className="AdminPage">
-      <div className="client">
-        <h1>Client 1 (10:31 soat)</h1>
-        <p>
-          name, tel, <br /> model, color, number, photo, location, location
-          location, location
-        </p>
-        <button>accept</button>
-        <button>delete</button>
-      </div>
-      <div className="client">
-        <h1>Client 2 (10:25)</h1>
-        <p>name, tel, model, color, number, photo, location</p>
-        <button>accept</button>
-        <button>delete</button>
-      </div>
+      {datas.length > 0
+        ? datas.map((data) => {
+            return (
+              <div className="client" key={data.id}>
+                <h1>
+                  {data.name} ({data.time})
+                </h1>
+                <p>
+                  {data.phone}, <br /> {data.model}, <br />
+                  {data.color},<br /> {data.carnum},<br />
+                  {data.latitude}, {data.longitude}
+                </p>
+                <button>accept</button>
+                <button>delete</button>
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 };

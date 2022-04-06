@@ -7,3 +7,7 @@ export const api = "http://localhost:5000";
 export const postData = (formData) => {
   return Axios.post(api + "/api/postClient", formData);
 };
+
+export const getData = () => {
+  return Axios.get(api + "/api/datas");
+};

@@ -1,11 +1,7 @@
 import Customer from "../models/productModel.js";
-import { readFile } from "fs";
+import fs, { readFileSync } from "fs";
 
 export async function sendingData(req, res) {
-  res.send("slash coming");
-  // const Custom = new Customer({
-  //   name: req.body.name,
-  //   tel: req.body.tel,
-  // });
-  // await Custom.save();
+  const jsonData = readFileSync("./data/data.json");
+  res.send(JSON.parse(jsonData));
 }

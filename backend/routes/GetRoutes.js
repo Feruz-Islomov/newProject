@@ -1,5 +1,6 @@
 import express from "express";
 import { sendingData } from "../controller/SendData.js";
+import fs from "fs";
 import upload from "../helpers/UploadFile.js";
 
 const router = express.Router();
@@ -7,8 +8,12 @@ const router = express.Router();
 router.get("/datas", sendingData);
 
 router.post("/postClient", upload.single("img"), (req, res) => {
-  console.log(req.body);
-  res.status(200).send(req.body);
+  const newData = req.body;
+  const existData = JSON.parse(fs.readFileSync("./data/data.json"));
+  existData.push(newData);
+  const stringifyData = JSON.stringify(existData);
+  fs.writeFileSync("./data/data.json", stringifyData);
+  res.status(200).send("data posted");
 });
 
 router.get("*", (req, res) => {

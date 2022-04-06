@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cd88619e-b593-470e-b1d9-63ae0c9adb93",
+    "name": "Xolid",
+    "phone": "998933488522",
+    "model": "Ferrari",
+    "color": "white",
+    "carnum": "AF 444 F | 30",
+    "latitude": "24.7678999",
+    "longitude": "46.6608875",
+    "time": "11:41:42 AM"
+  },
+  {
+    "id": "a648fa61-766c-4998-9886-6018701faa09",
+    "name": "Zubayr",
+    "phone": "998933333333",
+    "model": "Captive",
+    "color": "Black",
+    "carnum": "ZZ 777 Z | 77",
+    "latitude": "24.7678999",
+    "longitude": "46.6608875",
+    "time": "11:52:19 AM"
+  }
+]
