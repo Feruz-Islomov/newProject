@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { getData } from "./Api";
+import React from "react";
+import { deleteUser } from "./Api";
 
-const AdminPage = () => {
-  const [datas, setDatas] = useState([]);
-  useEffect(() => {
-    getData()
-      .then((res) => {
-        setDatas(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-  console.log(datas);
+const AdminPage = (props) => {
+  const { datas } = props;
   return (
     <div className="AdminPage">
       {datas.length > 0
@@ -26,7 +18,7 @@ const AdminPage = () => {
                   {data.latitude}, {data.longitude}
                 </p>
                 <button>accept</button>
-                <button>delete</button>
+                <button onClick={() => deleteUser(data.id)}>delete</button>
               </div>
             );
           })

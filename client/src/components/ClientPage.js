@@ -3,10 +3,10 @@ import Boxes from "./Boxes";
 import Forms from "./Forms";
 
 const ClientPage = (props) => {
-  const { getLocation, getLoc } = props;
+  const { getLocation, getLoc, getData } = props;
   return (
     <>
-      <Forms getLoc={getLoc} />
+      <Forms getLoc={getLoc} getData={getData} />
       <Boxes getLocation={getLocation} />
     </>
   );

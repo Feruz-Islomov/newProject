@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { postData } from "./Api";
 
 const Forms = (props) => {
-  const { getLoc } = props;
+  const { getLoc, getData } = props;
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(0);
   const [model, setModel] = useState("");
@@ -47,6 +47,7 @@ const Forms = (props) => {
       })
       .catch((err) => console.log(err));
     getLoc(latitude, longitude);
+    getData();
   };
 
   return (

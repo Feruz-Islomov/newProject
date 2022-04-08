@@ -8,6 +8,19 @@ export const postData = (formData) => {
   return Axios.post(api + "/api/postClient", formData);
 };
 
-export const getData = () => {
-  return Axios.get(api + "/api/datas");
+export const fetchData = (sd) => {
+  return Axios.get(api + "/api/datas")
+    .then((res) => {
+      sd(res.data);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const deleteUser = (id) => {
+  console.log(id);
+  return Axios.delete("/api/delete", { id })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
 };

@@ -1,19 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminPage from "./components/AdminPage";
+import { fetchData } from "./components/Api";
 import ClientPage from "./components/ClientPage";
+import Header from "./components/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [getLocation, setGetLocation] = useState({});
+  const [datas, setDatas] = useState([]);
+  const getData = () => {
+    fetchData(setDatas);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   const getLoc = (latitude, longitude) => {
     setGetLocation({ latitude, longitude });
-    console.log(latitude, longitude);
   };
 
   return (
     <div className="App">
-      <h1 className="ttl">EcoWash</h1>
-      <ClientPage getLocation={getLocation} getLoc={getLoc} />
-      <AdminPage />
+      <Router>
+        <Header />
+        <h1 className="ttl">EcoWash</h1>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/client"
+            element={
+              <ClientPage
+                getLocation={getLocation}
+                getLoc={getLoc}
+                getData={getData}
+              />
+            }
+          />
+          <Route path="/admin" element={<AdminPage datas={datas} />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

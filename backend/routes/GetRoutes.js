@@ -10,12 +10,15 @@ router.get("/datas", sendingData);
 router.post("/postClient", upload.single("img"), (req, res) => {
   const newData = req.body;
   const existData = JSON.parse(fs.readFileSync("./data/data.json"));
-  existData.push(newData);
+  existData.unshift(newData);
   const stringifyData = JSON.stringify(existData);
   fs.writeFileSync("./data/data.json", stringifyData);
   res.status(200).send("data posted");
 });
-
+router.delete("/delete", (req, res) => {
+  console.log(req.body);
+  res.send("deleted");
+});
 router.get("*", (req, res) => {
   res.status(404).send("No such page");
 });
