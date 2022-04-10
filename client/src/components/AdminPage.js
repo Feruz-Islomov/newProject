@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { deleteUser } from "./Api";
 
 const AdminPage = (props) => {
@@ -17,7 +18,10 @@ const AdminPage = (props) => {
                   {data.color},<br /> {data.carnum},<br />
                   {data.latitude}, {data.longitude}
                 </p>
-                <button>accept</button>
+                <button>Reed more</button>
+                <Link to={`/client/${data.id}`} state={{ data: data }}>
+                  <button>View Details</button>
+                </Link>
                 <button onClick={() => deleteUser(data.id)}>delete</button>
               </div>
             );

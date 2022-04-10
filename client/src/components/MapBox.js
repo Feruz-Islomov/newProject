@@ -1,8 +1,9 @@
 import React from "react";
 import { Map, Placemark, YMaps, ZoomControl } from "react-yandex-maps";
 
-const Boxes = (props) => {
-  const { getLocation, picture } = props;
+const MapBox = (props) => {
+  const { getLocation } = props;
+  console.log(getLocation);
   return (
     <div className="boxes">
       {getLocation.latitude ? (
@@ -25,9 +26,9 @@ const Boxes = (props) => {
           </YMaps>
         </div>
       ) : null}
-      {picture ? <div className="mapbox">PICTURE</div> : null}
+      {/* {picture ? <div className="mapbox">PICTURE</div> : null} */}
     </div>
   );
 };
 
-export default Boxes;
+export default MapBox;

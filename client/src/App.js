@@ -5,12 +5,14 @@ import ClientPage from "./components/ClientPage";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
+import SingleClient from "./components/SingleClient";
 
 function App() {
   const [getLocation, setGetLocation] = useState({});
   const [datas, setDatas] = useState([]);
   const getData = () => {
     fetchData(setDatas);
+    console.log("loaded");
   };
   useEffect(() => {
     getData();
@@ -37,7 +39,14 @@ function App() {
               />
             }
           />
-          <Route path="/admin" element={<AdminPage datas={datas} />} />
+          <Route
+            path="/client/:id"
+            element={<SingleClient getLocation={getLocation} />}
+          />
+          <Route
+            path="/admin"
+            element={<AdminPage getData={getData} datas={datas} />}
+          />
         </Routes>
       </Router>
     </div>
