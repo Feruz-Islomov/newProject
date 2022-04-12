@@ -12,7 +12,10 @@ function App() {
   const [datas, setDatas] = useState([]);
   const getData = () => {
     fetchData(setDatas);
-    console.log("loaded");
+  };
+  const deleteClient = (id) => {
+    const filtered = datas.filter((x) => x.id !== id);
+    setDatas(filtered);
   };
   useEffect(() => {
     getData();
@@ -45,7 +48,13 @@ function App() {
           />
           <Route
             path="/admin"
-            element={<AdminPage getData={getData} datas={datas} />}
+            element={
+              <AdminPage
+                getData={getData}
+                datas={datas}
+                deleteClient={deleteClient}
+              />
+            }
           />
         </Routes>
       </Router>

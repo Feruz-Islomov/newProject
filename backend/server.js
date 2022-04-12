@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import cors from "cors";
 import GetRoutes from "./routes/GetRoutes.js";
+import path from "path";
+const __dirname = path.resolve();
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(
@@ -23,6 +25,7 @@ mongoose
 
 app.use(express.json()); //POST and PUT JSON OBJECT
 app.use(urlencoded({ extended: true })); //POST and PUT String, Arrays
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api", GetRoutes);
 

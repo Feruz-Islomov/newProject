@@ -8,7 +8,8 @@ const router = express.Router();
 router.get("/datas", sendingData);
 
 router.post("/postClient", upload.single("img"), (req, res) => {
-  const newData = req.body;
+  const newReq = req.body;
+  const newData = { ...newReq, img: req.file.path };
   const existData = JSON.parse(fs.readFileSync("./data/data.json"));
   existData.unshift(newData);
   const stringifyData = JSON.stringify(existData);
@@ -31,15 +32,22 @@ const wholeData = (path) => {
   return JSON.parse(wholeData);
 };
 const checkExistence = (clientId, existClients) => {
-  const findExist = existClients.filter((x) => x.id === clientId);
+  const findExist = existClients.find((x) => x.id === clientId);
   if (!findExist) {
     return res.status(401).send("there is no such client!");
   }
+  deleteImg(findExist.img);
 };
 const deleteSaveData = (id, existClients, path) => {
   const filteredData = existClients.filter((x) => x.id !== id);
   const str = JSON.stringify(filteredData);
   fs.writeFileSync(path, str);
+};
+const deleteImg = (imgpath) => {
+  fs.unlink(imgpath, (err) => {
+    if (err) throw err;
+    // console.log("image deleted!");
+  });
 };
 router.get("*", (req, res) => {
   res.status(404).send("No such page");

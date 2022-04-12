@@ -3,7 +3,6 @@ import { Map, Placemark, YMaps, ZoomControl } from "react-yandex-maps";
 
 const MapBox = (props) => {
   const { getLocation } = props;
-  console.log(getLocation);
   return (
     <div className="boxes">
       {getLocation.latitude ? (

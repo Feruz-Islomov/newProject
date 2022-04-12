@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { deleteUser } from "./Api";
 
 const AdminPage = (props) => {
-  const { datas } = props;
+  const { datas, deleteClient } = props;
   return (
     <div className="AdminPage">
       {datas.length > 0
@@ -22,7 +22,14 @@ const AdminPage = (props) => {
                 <Link to={`/client/${data.id}`} state={{ data: data }}>
                   <button>View Details</button>
                 </Link>
-                <button onClick={() => deleteUser(data.id)}>delete</button>
+                <button
+                  onClick={() => {
+                    deleteClient(data.id);
+                    deleteUser(data.id);
+                  }}
+                >
+                  delete
+                </button>
               </div>
             );
           })

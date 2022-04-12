@@ -22,7 +22,7 @@ export const fetchSingleClient = (id) => {
 
 export const deleteUser = (id) => {
   return (
-    Axios.delete(`/api/delete/${id}`)
+    Axios.delete(url + `/api/delete/${id}`)
       // return Axios.delete(`/api/delete/`, { data: { id } })
       .then((res) => {
         console.log(res.data);
